@@ -1,0 +1,23 @@
+﻿@model IEnumerable<AlbiBlogu.Models.Post>
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<h1>View</h1>
+
+<ul>
+    @foreach (var item in Model.Reverse())
+    {
+        <li>
+            <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            <p>Created on: @Html.DisplayFor(modelItem => item.CreatedDate)</p>
+            <p>Author: @Html.DisplayFor(modelItem => item.Author)</p>
+            @if (!string.IsNullOrEmpty(item.ImagePath))
+            {
+                <img src="@item.ImagePath" alt="@item.Title" />
+            }
+        </li>
+    }
+</ul>
